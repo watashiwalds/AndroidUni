@@ -43,16 +43,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void openBMI(View v) {
-        Intent it = new Intent(this, BMICalculator.class);
-        startActivity(it);
-    }
-
-    public void openListView(View v) {
-        Intent it = new Intent(this, ListViewDemo.class);
-        startActivity(it);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -102,5 +92,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dialog.show();
+    }
+
+    public void openBMI(View v) {
+        Intent it = new Intent(this, BMICalculator.class);
+        startActivity(it);
+    }
+
+    public void openListView(View v) {
+        Intent it = new Intent(this, ListViewDemo.class);
+        startActivity(it);
+    }
+
+    public void openGridView(View v) {
+        Intent it = new Intent(this, GridViewTest.class);
+        startActivity(it);
     }
 }

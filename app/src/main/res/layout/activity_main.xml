@@ -23,11 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="58dp"
         android:onClick="openListView"
         android:text="ListViewDemo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnBMI" />
+        app:layout_constraintTop_toBottomOf="@+id/btnBMI" />
 
     <TextView
         android:id="@+id/tvChangeColor"
@@ -47,4 +46,14 @@
         app:layout_constraintBottom_toTopOf="@+id/tvChangeColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnGridView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:onClick="openGridView"
+        android:text="GridViewTest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnListView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
