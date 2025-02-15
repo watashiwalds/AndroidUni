@@ -1,5 +1,6 @@
 package com.example.firstlesson;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,7 +8,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -30,11 +34,13 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Show the Action Bar (if hidden)
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.show();
-        }
+        Button btnStartLogin = findViewById(R.id.btnStartLogin);
+        btnStartLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogOpen_Login();
+            }
+        });
     }
 
     public void openBMI(View v) {
@@ -67,5 +73,34 @@ public class MainActivity extends AppCompatActivity {
             changethis.setBackgroundColor(Color.BLUE);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void dialogOpen_Login() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_loginform);
+        EditText username = dialog.findViewById(R.id.login_etUsername);
+        EditText password = dialog.findViewById(R.id.login_etPassword);
+        Button submit = dialog.findViewById(R.id.login_btnSubmit);
+        Button cancel = dialog.findViewById(R.id.login_btnCancel);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+                    Toast.makeText(MainActivity.this, "Login successed", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Login failed. admin | admin", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        dialog.show();
     }
 }
