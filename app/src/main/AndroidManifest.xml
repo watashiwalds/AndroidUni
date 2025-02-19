@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FirstLesson"
         tools:targetApi="31">
         <activity
+            android:name=".CustomListView"
+            android:exported="false" />
+        <activity
             android:name=".GridViewTest"
             android:exported="false" />
         <activity
