@@ -108,4 +108,9 @@ public class MainActivity extends AppCompatActivity {
         Intent it = new Intent(this, GridViewTest.class);
         startActivity(it);
     }
+
+    public void openCustomListView(View v) {
+        Intent it = new Intent(this, CustomListView.class);
+        startActivity(it);
+    }
 }
