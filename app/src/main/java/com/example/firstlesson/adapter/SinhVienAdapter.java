@@ -37,7 +37,7 @@ public class SinhVienAdapter extends ArrayAdapter<SinhVien> {
             TextView name = v.findViewById(R.id.tvName);
             TextView yob = v.findViewById(R.id.tvYob);
             name.setText(sv.name);
-            yob.setText(sv.yob);
+            yob.setText(String.valueOf(sv.yob));
         }
         return v;
     }
