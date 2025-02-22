@@ -13,6 +13,12 @@
         android:theme="@style/Theme.FirstLesson"
         tools:targetApi="31">
         <activity
+            android:name=".RecieveIntent"
+            android:exported="false" />
+        <activity
+            android:name=".IntentPipe"
+            android:exported="false" />
+        <activity
             android:name=".CustomListView"
             android:exported="false" />
         <activity
