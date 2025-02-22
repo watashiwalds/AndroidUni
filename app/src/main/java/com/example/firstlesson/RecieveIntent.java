@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +25,17 @@ public class RecieveIntent extends AppCompatActivity {
             return insets;
         });
 
+        Intent parent = getIntent();
+        TextView txShowMsg = findViewById(R.id.txShowMsg);
+        txShowMsg.setText("Your message: " + parent.getStringExtra("msg"));
+
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(RecieveIntent.this, IntentPipe.class);
-                startActivity(it);
+                finish();
+//                Intent it = new Intent(RecieveIntent.this, IntentPipe.class);
+//                startActivity(it);
             }
         });
     }
