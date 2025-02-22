@@ -27,7 +27,9 @@ public class RecieveIntent extends AppCompatActivity {
 
         Intent parent = getIntent();
         TextView txShowMsg = findViewById(R.id.txShowMsg);
+        TextView txShowNum = findViewById(R.id.txShowNum);
         txShowMsg.setText("Your message: " + parent.getStringExtra("msg"));
+        txShowNum.setText("Your number: " + parent.getIntExtra("num", 100000));
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {

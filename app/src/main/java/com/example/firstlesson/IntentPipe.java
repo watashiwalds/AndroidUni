@@ -31,7 +31,9 @@ public class IntentPipe extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(IntentPipe.this, RecieveIntent.class);
                 EditText etMsg = findViewById(R.id.etMessage);
+                EditText etNum = findViewById(R.id.etNumber);
                 it.putExtra("msg", etMsg.getText().toString());
+                it.putExtra("num", Integer.getInteger(etNum.getText().toString()));
                 startActivity(it);
             }
         });
