@@ -1,8 +1,14 @@
 package com.example.firstlesson;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,8 +33,13 @@ public class CustomListView extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         ListView lvSinhVien = findViewById(R.id.lvSinhVien);
+        final Integer[] nowIndex = new Integer[1];
+        EditText nameinp = findViewById(R.id.etName);
+        EditText yobinp = findViewById(R.id.etYob);
+        Button btnAdd = findViewById(R.id.btnAdd);
 
         ArrayList<SinhVien> alSinhviens = new ArrayList<>();
         alSinhviens.add(new SinhVien("Nguyen Van A", 2004));
@@ -57,5 +68,33 @@ public class CustomListView extends AppCompatActivity {
 
         lvSinhVien.setAdapter(apSinhvien);
         apSinhvien.notifyDataSetChanged();
+
+        lvSinhVien.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(CustomListView.this, alSinhviens.get(position).name + " " + alSinhviens.get(position).yob, Toast.LENGTH_SHORT).show();
+                nowIndex[0] = position;
+                nameinp.setText(alSinhviens.get(nowIndex[0]).name);
+                yobinp.setText(alSinhviens.get(nowIndex[0]).yob);
+            }
+        });
+        lvSinhVien.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                alSinhviens.remove(position);
+                apSinhvien.notifyDataSetChanged();
+                return true;
+            }
+        });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (nameinp.getText().toString().isBlank() || yobinp.getText().toString().isBlank()) {} else {
+                    alSinhviens.add(new SinhVien(nameinp.getText().toString(), Integer.valueOf(yobinp.getText().toString())));
+                    apSinhvien.notifyDataSetChanged();
+                }
+            }
+        });
     }
 }
