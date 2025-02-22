@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -32,10 +34,20 @@ public class IntentPipe extends AppCompatActivity {
                 Intent it = new Intent(IntentPipe.this, RecieveIntent.class);
                 EditText etMsg = findViewById(R.id.etMessage);
                 EditText etNum = findViewById(R.id.etNumber);
-                it.putExtra("msg", etMsg.getText().toString());
-                it.putExtra("num", Integer.getInteger(etNum.getText().toString()));
-                startActivity(it);
+                it.putExtra("msg", Integer.parseInt(etMsg.getText().toString()));
+                it.putExtra("num", Integer.parseInt(etNum.getText().toString()));
+                startActivityForResult(it, 1);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_OK) {
+            TextView tvResult = findViewById(R.id.tvResult);
+            Integer result = data.getIntExtra("num1",0) + data.getIntExtra("num2", 0);
+            tvResult.setText(result);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
