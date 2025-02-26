@@ -12,6 +12,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.firstlesson.data.SinhVien;
+
 public class RecieveIntent extends AppCompatActivity {
 
     @Override
@@ -27,19 +29,15 @@ public class RecieveIntent extends AppCompatActivity {
 
         Intent parent = getIntent();
         TextView txShowMsg = findViewById(R.id.txShowMsg);
-        TextView txShowNum = findViewById(R.id.txShowNum);
-        Integer num1 = parent.getIntExtra("msg", 0);
-        Integer num2 = parent.getIntExtra("num", 0);
-        txShowMsg.setText("Your number1: " + num1);
-        txShowNum.setText("Your number2: " + num2);
+        SinhVien sv = (SinhVien) parent.getSerializableExtra("sinhvien");
+        assert sv != null;
+        txShowMsg.setText("Ho ten: " + sv.getHoten() + ", nam sinh: " + sv.getNamsinh().toString());
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent();
-                it.putExtra("num1", Integer.valueOf(num1));
-                it.putExtra("num2", Integer.valueOf(num2));
                 setResult(RESULT_OK, it);
                 finish();
 //                Intent it = new Intent(RecieveIntent.this, IntentPipe.class);

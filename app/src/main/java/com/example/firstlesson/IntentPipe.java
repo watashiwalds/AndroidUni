@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.firstlesson.data.SinhVien;
 
 public class IntentPipe extends AppCompatActivity {
 
@@ -27,27 +27,20 @@ public class IntentPipe extends AppCompatActivity {
             return insets;
         });
 
+        EditText etHoten = findViewById(R.id.etHoten);
+        EditText etNamsinh = findViewById(R.id.etNamsinh);
+
         Button btnSend = findViewById(R.id.btnSend);
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String ht = etHoten.getText().toString();
+                Integer ns = Integer.parseInt(etNamsinh.getText().toString());
+                SinhVien sv = new SinhVien(ht, ns);
                 Intent it = new Intent(IntentPipe.this, RecieveIntent.class);
-                EditText etMsg = findViewById(R.id.etMessage);
-                EditText etNum = findViewById(R.id.etNumber);
-                it.putExtra("msg", Integer.parseInt(etMsg.getText().toString()));
-                it.putExtra("num", Integer.parseInt(etNum.getText().toString()));
-                startActivityForResult(it, 1);
+                it.putExtra("sinhvien", sv);
+                startActivity(it);
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK) {
-            TextView tvResult = findViewById(R.id.tvResult);
-            Integer result = data.getIntExtra("num1",0) + data.getIntExtra("num2", 0);
-            tvResult.setText(result);
-        }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }
