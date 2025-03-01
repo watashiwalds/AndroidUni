@@ -14,27 +14,27 @@
         android:text="Gui"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNamsinh" />
+        app:layout_constraintTop_toBottomOf="@+id/etSo2" />
 
     <EditText
-        android:id="@+id/etNamsinh"
+        android:id="@+id/etSo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="nam sinh"
+        android:hint="so 2"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etHoten" />
+        app:layout_constraintTop_toBottomOf="@+id/etSo1" />
 
     <EditText
-        android:id="@+id/etHoten"
+        android:id="@+id/etSo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="ho ten"
-        android:inputType="text"
+        android:hint="so 1"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

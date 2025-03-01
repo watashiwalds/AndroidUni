@@ -27,21 +27,17 @@ public class RecieveIntent extends AppCompatActivity {
             return insets;
         });
 
-        Intent parent = getIntent();
-        TextView txShowMsg = findViewById(R.id.txShowMsg);
-        SinhVien sv = (SinhVien) parent.getSerializableExtra("sinhvien");
-        assert sv != null;
-        txShowMsg.setText("Ho ten: " + sv.getHoten() + ", nam sinh: " + sv.getNamsinh().toString());
-
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent();
-                setResult(RESULT_OK, it);
+                Intent it = getIntent();
+                int a = it.getIntExtra("so1", 0);
+                int b = it.getIntExtra("s02", 0);
+                int c = a+b;
+                it.putExtra("tong", c);
+                setResult(33, it);
                 finish();
-//                Intent it = new Intent(RecieveIntent.this, IntentPipe.class);
-//                startActivity(it);
             }
         });
     }

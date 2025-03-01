@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Intent it =  new Intent(this, SearchSinhvien.class);
+        Intent it =  new Intent(this, IntentPipe.class);
         startActivity(it);
 
         Button btnStartLogin = findViewById(R.id.btnStartLogin);
