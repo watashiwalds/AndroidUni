@@ -33,7 +33,7 @@ public class RecieveIntent extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = getIntent();
                 int a = it.getIntExtra("so1", 0);
-                int b = it.getIntExtra("s02", 0);
+                int b = it.getIntExtra("so2", 0);
                 int c = a+b;
                 it.putExtra("tong", c);
                 setResult(33, it);
