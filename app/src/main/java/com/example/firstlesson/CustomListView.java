@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -39,7 +38,7 @@ public class CustomListView extends AppCompatActivity {
         final Integer[] nowIndex = new Integer[1];
         EditText nameinp = findViewById(R.id.etName);
         EditText yobinp = findViewById(R.id.etYob);
-        Button btnAdd = findViewById(R.id.btnAdd);
+        Button btnAdd = findViewById(R.id.btnInsert);
 
         ArrayList<SinhVien> alSinhviens = new ArrayList<>();
         alSinhviens.add(new SinhVien("Nguyen Van A", 2004));

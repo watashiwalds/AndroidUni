@@ -38,10 +38,50 @@
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnInsert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add to SQLite"
+        android:text="Insert"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etYOB" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        app:layout_constraintStart_toEndOf="@+id/btnInsert"
+        app:layout_constraintTop_toTopOf="@+id/btnInsert" />
+
+    <Button
+        android:id="@+id/btnDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display"
+        app:layout_constraintStart_toEndOf="@+id/btnUpdate"
+        app:layout_constraintTop_toTopOf="@+id/btnInsert" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        app:layout_constraintStart_toEndOf="@+id/btnDisplay"
+        app:layout_constraintTop_toTopOf="@+id/btnInsert" />
+
+    <TextView
+        android:id="@+id/tvListSQL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsert" />
+
+    <Button
+        android:id="@+id/btnFetch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fetch"
+        app:layout_constraintStart_toEndOf="@+id/etName"
+        app:layout_constraintTop_toBottomOf="@+id/etIdentification" />
 </androidx.constraintlayout.widget.ConstraintLayout>

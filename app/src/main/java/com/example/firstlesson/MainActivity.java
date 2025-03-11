@@ -22,6 +22,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.firstlesson.funcdemo.SearchSinhvien;
+import com.example.firstlesson.workwithsqlite.DatabaseUse;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Intent it =  new Intent(this, IntentPipe.class);
+        Intent it =  new Intent(this, DatabaseUse.class);
         startActivity(it);
 
         Button btnStartLogin = findViewById(R.id.btnStartLogin);
