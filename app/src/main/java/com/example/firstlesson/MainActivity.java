@@ -15,14 +15,10 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.example.firstlesson.funcdemo.SearchSinhvien;
-import com.example.firstlesson.workwithsqlite.DatabaseUse;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Intent it =  new Intent(this, DatabaseUse.class);
+        Intent it =  new Intent(this, ReadContentProvider.class);
         startActivity(it);
 
         Button btnStartLogin = findViewById(R.id.btnStartLogin);
