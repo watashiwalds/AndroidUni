@@ -3,7 +3,9 @@ package com.example.firstlesson;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CallLog;
 import android.provider.ContactsContract;
+import android.telecom.Call;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -20,6 +22,7 @@ public class ShowContact extends AppCompatActivity {
 
     Button btnBack;
     ListView lvContact;
+    ListView lvCallog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,46 @@ public class ShowContact extends AppCompatActivity {
         });
 
         showContacts();
+        showCallog();
+    }
+
+    private void showCallog() {
+        lvCallog = findViewById(R.id.lvCallog);
+        ArrayList<String> arl = new ArrayList<String>();
+
+        String[] projection = new String[]{
+                CallLog.Calls.DATE,
+                CallLog.Calls.NUMBER,
+                CallLog.Calls.DURATION
+        };
+        Cursor cr = getContentResolver().query(
+                CallLog.Calls.CONTENT_URI, projection,
+                CallLog.Calls.DURATION+"<?",
+                new String[] {"10"},
+                CallLog.Calls.DATE + " ASC"
+        );
+
+        cr.moveToFirst();
+        String s = "";
+        while (!cr.isAfterLast()) {
+            s = "";
+
+            for (int i = 0; i < cr.getColumnCount(); i++) {
+                s += cr.getString(i) + " - ";
+            }
+            s += "\n";
+            arl.add(s);
+
+            cr.moveToNext();
+        }
+        cr.close();
+
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                arl
+        );
+        lvCallog.setAdapter(adp);
     }
 
     private void showContacts() {
