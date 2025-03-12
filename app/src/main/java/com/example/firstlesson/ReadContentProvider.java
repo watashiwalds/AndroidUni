@@ -1,5 +1,6 @@
 package com.example.firstlesson;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -34,6 +35,12 @@ public class ReadContentProvider extends AppCompatActivity {
             startActivity(it);
         });
 
+        Button btnShowMessage = findViewById(R.id.btnReadMessage);
+        btnShowMessage.setOnClickListener(v -> {
+            Intent it = new Intent(this, ShowMessage.class);
+            startActivity(it);
+        });
+
         getPermission();
     }
 
@@ -42,6 +49,11 @@ public class ReadContentProvider extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.READ_CONTACTS}, 1);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_SMS}, 1);
         }
     }
 }

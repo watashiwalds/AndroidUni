@@ -62,6 +62,8 @@ public class ShowContact extends AppCompatActivity {
                 cr.moveToNext();
             }
         }
+        assert cr != null;
+        cr.close();
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(
                 this,
